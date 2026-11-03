@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GT Nelson IPTV</title>
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="topo"><a href="./"><img src="logo.png" alt="" width="48" height="48"><span>GT Nelson IPTV</span></a></header>
+<main>
+<h1>GT Nelson IPTV</h1>
+<p>Player para TVs LG (webOS) que toca o conteúdo do seu provedor: servidores Xtream Codes ou listas M3U. Perfis de quem assiste, perfil infantil com controle parental, Continuar assistindo, favoritos, busca e histórico entre aparelhos pelo Trakt.</p>
+<p class="muted">O app não fornece, hospeda nem vende canais, filmes ou séries. Ele toca apenas o que você cadastrar.</p>
+
+<div class="cartao">
+<h2 style="margin-top:0">Lista de teste</h2>
+<p>Lista M3U só com transmissões públicas de teste e filmes abertos, para experimentar o app. No app, em Adicionar servidor, cole o link abaixo no endereço e deixe usuário e senha em branco.</p>
+<span class="link" id="lista"></span>
+<p class="muted">Conteúdo: transmissões de teste da Mux, da Apple e da Unified Streaming, a NASA TV e os filmes abertos da Blender Foundation (Big Buck Bunny, Sintel, Tears of Steel e Elephants Dream, sob licença Creative Commons Attribution).</p>
+</div>
+
+<div class="cartao" lang="en">
+<h2 style="margin-top:0">Test playlist (for reviewers)</h2>
+<p>An M3U playlist with public test streams and open movies only. In the app, open Add server, paste the link above into the address field and leave username and password empty.</p>
+</div>
+
+<p><a href="privacidade.html">Política de privacidade · Privacy policy</a></p>
+<p class="muted">Contato: <a href="mailto:d.son0202@gmail.com">d.son0202@gmail.com</a></p>
+</main>
+<script>
+  // mostra o endereço completo da lista a partir de onde a página está publicada
+  document.getElementById('lista').textContent = new URL('teste.m3u', location.href).href;
+</script>
+</body>
+</html>
