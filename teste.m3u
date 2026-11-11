@@ -1,23 +1,17 @@
 #EXTM3U
-#EXTINF:-1 tvg-id="teste-mux" tvg-logo="" group-title="Canais de teste",Teste Mux (Big Buck Bunny)
-https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="teste-mux-2" tvg-logo="" group-title="Canais de teste",Teste Mux 2
-https://test-streams.mux.dev/test_001/stream.m3u8
-#EXTINF:-1 tvg-id="teste-apple" tvg-logo="" group-title="Canais de teste",Teste Apple (bipbop)
-https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8
-#EXTINF:-1 tvg-id="teste-unified" tvg-logo="" group-title="Canais de teste",Teste Unified Streaming (Tears of Steel)
-https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8
-#EXTINF:-1 tvg-id="nasa-tv" tvg-logo="" group-title="Canais públicos",NASA TV
-https://ntv1.akamaized.net/hls/live/2014075/NASA-NTV1-HLS/master.m3u8
-#EXTINF:-1 tvg-logo="" group-title="Filmes abertos (Blender Foundation, CC BY)",Big Buck Bunny (2008)
-https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
-#EXTINF:-1 tvg-logo="" group-title="Filmes abertos (Blender Foundation, CC BY)",Sintel (2010)
-https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4
-#EXTINF:-1 tvg-logo="" group-title="Filmes abertos (Blender Foundation, CC BY)",Tears of Steel (2012)
-https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4
-#EXTINF:-1 tvg-logo="" group-title="Séries de teste",Filmes Abertos S01E01 - Elephants Dream
-https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4
-#EXTINF:-1 tvg-logo="" group-title="Séries de teste",Filmes Abertos S01E02 - Big Buck Bunny
-https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
-#EXTINF:-1 tvg-logo="" group-title="Séries de teste",Filmes Abertos S01E03 - Sintel
-https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4
+#EXTINF:-1 tvg-id="gtn-teste-hls" tvg-chno="1" tvg-logo="https://dson0202-max.github.io/gt-nelson-iptv-site/logo-canal-hls.png" group-title="Canais de teste",Canal de teste HLS
+https://dson0202-max.github.io/gt-nelson-iptv-site/canal-teste.m3u8
+#EXTINF:-1 tvg-id="gtn-teste-ts" tvg-chno="2" tvg-logo="https://dson0202-max.github.io/gt-nelson-iptv-site/logo-canal-ts.png" group-title="Canais de teste",Canal de teste TS
+https://dson0202-max.github.io/gt-nelson-iptv-site/canal-teste-ts.ts
+#EXTINF:-1 tvg-logo="https://dson0202-max.github.io/gt-nelson-iptv-site/capa-filme-1.png" group-title="Filmes de teste",Filme de teste 1 (2026)
+https://dson0202-max.github.io/gt-nelson-iptv-site/filme-teste-1.mp4
+#EXTINF:-1 tvg-logo="https://dson0202-max.github.io/gt-nelson-iptv-site/capa-filme-2.png" group-title="Filmes de teste",Filme de teste 2 (2026)
+https://dson0202-max.github.io/gt-nelson-iptv-site/filme-teste-2.mp4
+#EXTINF:-1 tvg-logo="https://dson0202-max.github.io/gt-nelson-iptv-site/capa-filme-3.png" group-title="Filmes de teste",Filme de teste 3 (2026)
+https://dson0202-max.github.io/gt-nelson-iptv-site/filme-teste-3.mp4
+#EXTINF:-1 tvg-logo="https://dson0202-max.github.io/gt-nelson-iptv-site/capa-serie.png" group-title="Séries de teste",Série de teste S01E01 - Episódio 1
+https://dson0202-max.github.io/gt-nelson-iptv-site/serie-teste-t1e1.mp4
+#EXTINF:-1 tvg-logo="https://dson0202-max.github.io/gt-nelson-iptv-site/capa-serie.png" group-title="Séries de teste",Série de teste S01E02 - Episódio 2
+https://dson0202-max.github.io/gt-nelson-iptv-site/serie-teste-t1e2.mp4
+#EXTINF:-1 tvg-logo="https://dson0202-max.github.io/gt-nelson-iptv-site/capa-serie.png" group-title="Séries de teste",Série de teste S01E03 - Episódio 3
+https://dson0202-max.github.io/gt-nelson-iptv-site/serie-teste-t1e3.mp4
