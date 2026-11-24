@@ -3,15 +3,56 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GT Nelson IPTV</title>
+<title>GT Nelson IPTV · Baixar</title>
+<meta name="description" content="Player de IPTV grátis para Android: filmes, séries e canais ao vivo organizados, com perfis e transmissão para o Chromecast. Use a sua própria assinatura.">
+<!-- prévia do link no WhatsApp e redes -->
+<meta property="og:title" content="GT Nelson IPTV">
+<meta property="og:description" content="Seu IPTV organizado de verdade. Grátis, para Android. Transmite para o Chromecast.">
+<meta property="og:image" content="https://dson0202-max.github.io/gt-nelson-iptv-site/divulgacao-1.png">
+<meta property="og:url" content="https://dson0202-max.github.io/gt-nelson-iptv-site/">
+<meta property="og:type" content="website">
+<link rel="icon" href="logo.png">
 <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
 <header class="topo"><a href="./"><img src="logo.png" alt="" width="48" height="48"><span>GT Nelson IPTV</span></a></header>
 <main>
-<h1>GT Nelson IPTV</h1>
-<p>Player para TVs LG (webOS) que toca o conteúdo do seu provedor: servidores Xtream Codes ou listas M3U. Perfis de quem assiste, perfil infantil com controle parental, Continuar assistindo, favoritos, busca e histórico entre aparelhos pelo Trakt.</p>
-<p class="muted">O app não fornece, hospeda nem vende canais, filmes ou séries. Ele toca apenas o que você cadastrar.</p>
+
+<section class="hero">
+  <img src="logo.png" alt="" width="112" height="112">
+  <h1>Seu IPTV, <em>organizado</em> de verdade.</h1>
+  <p class="lead">Filmes, séries e canais ao vivo num app bonito e fácil de usar. Grátis, sem cadastro: você entra com a sua própria assinatura (Xtream Codes ou lista M3U).</p>
+</section>
+
+<!-- Plataformas: a lista fica no script lá embaixo (PLATAFORMAS). Para lançar uma nova, basta mudar emBreve para false. -->
+<section id="plataformas" class="plats"></section>
+
+<h2>Por que usar</h2>
+<div class="grade">
+  <div class="item"><b>Transmite para o Chromecast</b><span>Canais ao vivo, filmes e séries na TV, com áudio e legenda escolhidos no celular.</span></div>
+  <div class="item"><b>Um perfil para cada um</b><span>Avatar, Continuar assistindo e favoritos separados por pessoa.</span></div>
+  <div class="item"><b>Dublado e legendado num cartão só</b><span>Nada de título repetido; você escolhe a versão na ficha.</span></div>
+  <div class="item"><b>Guia dos canais</b><span>Veja o que está passando agora em cada canal, antes de abrir.</span></div>
+  <div class="item"><b>Perfil infantil</b><span>Controle parental por categoria e gênero, com senha.</span></div>
+  <div class="item"><b>Busca esperta</b><span>Acha o título mesmo com erro de digitação.</span></div>
+</div>
+
+<h2 id="instalar">Como instalar no Android</h2>
+<ol class="passos">
+  <li>Toque em <b>Baixar</b> acima. O arquivo vai para Downloads.</li>
+  <li>Abra o arquivo. Na primeira vez, o Android pede para <b>permitir instalar apps desta fonte</b> (o navegador ou Meus Arquivos): permita e volte.</li>
+  <li>Toque em <b>Instalar</b>. Se o Play Protect avisar que não conhece o app, toque em <b>Mais detalhes</b> e em <b>Instalar assim mesmo</b>. É o aviso padrão para apps de fora da loja.</li>
+  <li>Abra o app, toque em Adicionar servidor e use os dados que o seu provedor enviou.</li>
+</ol>
+<p class="muted">Para atualizar, baixe de novo e instale por cima: perfis, favoritos e servidores continuam lá. Funciona do Android 8 em diante, em celular e tablet.</p>
+
+<h2>Perguntas</h2>
+<details><summary>O app vem com canais?</summary><p>Não. O GT Nelson IPTV é só o player: ele não fornece, hospeda nem vende canais, filmes ou séries. Ele toca o que você cadastrar, com a assinatura que você já tem.</p></details>
+<details><summary>É grátis mesmo?</summary><p>Sim. No celular, o app mostra de vez em quando a sugestão de um produto da Shopee, na pausa e entre episódios, marcada como "Anúncio · link de afiliado". Perfis infantis não veem anúncios, e nada aparece no ao vivo nem transmitindo.</p></details>
+<details><summary>Meus dados ficam onde?</summary><p>No seu aparelho. O app não cria conta e não envia usuário nem senha para ninguém além do seu próprio servidor. Veja a <a href="privacidade.html">política de privacidade</a>.</p></details>
+<details><summary>Funciona na TV?</summary><p>Hoje, pelo Chromecast, transmitindo do celular. A versão para TV LG está em análise na loja da LG, e a versão para Android TV vem depois.</p></details>
+
+<hr>
 
 <div class="cartao">
 <h2 style="margin-top:0">Lista de teste</h2>
@@ -31,6 +72,56 @@
 <script>
   // mostra o endereço completo da lista a partir de onde a página está publicada
   document.getElementById('lista').textContent = new URL('teste.m3u', location.href).href;
+
+  // Downloads: os arquivos ficam nos Releases deste repositório. Cada plataforma tem um prefixo de versão
+  // (android-v1.1.3, androidtv-v1.0.0...), e a página mostra a versão mais nova de cada uma.
+  var REPO = 'dson0202-max/gt-nelson-iptv-site';
+  var PLATAFORMAS = [
+    { id: 'android', nome: 'Android', sub: 'Celular e tablet · Android 8 ou mais novo', prefixo: 'android-v', ext: '.apk', emBreve: false },
+    { id: 'androidtv', nome: 'Android TV', sub: 'Google TV, TV Box e Chromecast com Google TV', prefixo: 'androidtv-v', ext: '.apk', emBreve: true },
+    { id: 'lg', nome: 'TV LG', sub: 'webOS · pela loja de apps da LG', loja: '', emBreve: true }
+  ];
+  var TODAS = 'https://github.com/' + REPO + '/releases';
+
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function data(d) { try { return new Date(d).toLocaleDateString('pt-BR', { day: 'numeric', month: 'short', year: 'numeric' }); } catch (e) { return ''; } }
+  function mb(b) { return (b / 1048576).toFixed(1).replace('.', ',') + ' MB'; }
+
+  function desenha(rels) {
+    var h = '';
+    PLATAFORMAS.forEach(function (p) {
+      var bt, info = '';
+      if (p.emBreve) {
+        bt = '<span class="bt off">Em breve</span>';
+      } else if (p.loja) {
+        bt = '<a class="bt" href="' + esc(p.loja) + '">Abrir na loja</a>';
+      } else {
+        var r = null, a = null;
+        (rels || []).some(function (x) {
+          if (x.draft || x.prerelease || x.tag_name.indexOf(p.prefixo) !== 0) return false;
+          a = (x.assets || []).filter(function (y) { return y.name.slice(-p.ext.length) === p.ext; })[0];
+          if (a) { r = x; return true; } return false;
+        });
+        if (r) {
+          bt = '<a class="bt" href="' + esc(a.browser_download_url) + '">Baixar</a>';
+          info = 'Versão ' + esc(r.tag_name.slice(p.prefixo.length)) + ' · ' + data(r.published_at) + ' · ' + mb(a.size);
+        } else {
+          // sem acesso ao GitHub agora: leva para a lista de versões
+          bt = '<a class="bt" href="' + TODAS + '">Baixar</a>';
+          info = 'Escolha o arquivo .apk mais recente';
+        }
+      }
+      h += '<div class="plat' + (p.emBreve ? ' breve' : '') + '"><div><b>' + esc(p.nome) + '</b><span>' + esc(p.sub) + '</span>' +
+        (info ? '<small>' + info + '</small>' : '') + '</div>' + bt + '</div>';
+    });
+    h += '<p class="muted outras"><a href="' + TODAS + '">Todas as versões e novidades</a></p>';
+    document.getElementById('plataformas').innerHTML = h;
+  }
+  desenha(null);
+  var x = new XMLHttpRequest();
+  x.open('GET', 'https://api.github.com/repos/' + REPO + '/releases?per_page=50', true);
+  x.onload = function () { try { if (x.status === 200) desenha(JSON.parse(x.responseText)); } catch (e) {} };
+  x.send();
 </script>
 </body>
 </html>
