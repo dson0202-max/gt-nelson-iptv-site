@@ -37,6 +37,9 @@
   <div class="item"><b>Busca esperta</b><span>Acha o título mesmo com erro de digitação.</span></div>
 </div>
 
+<!-- anúncio de afiliado (produto neutro), da mesma lista do app; some sozinho se a lista não vier -->
+<a id="anuncio" class="anuncio" hidden target="_blank" rel="sponsored noopener"></a>
+
 <h2 id="instalar">Como instalar no Android</h2>
 <ol class="passos">
   <li>Toque em <b>Baixar</b> acima. O arquivo vai para Downloads.</li>
@@ -118,6 +121,38 @@
     document.getElementById('plataformas').innerHTML = h;
   }
   desenha(null);
+
+  // Anúncio: um produto neutro sorteado da lista do servidor de anúncios (a mesma do app). Usa links.site
+  // (sub-ID "site" no relatório da Shopee) e, enquanto o servidor não manda esse link, o da pausa.
+  // Sem lista, lista de teste ou imagem quebrada: não mostra nada.
+  var ADS = 'https://gtnelson-ads.gtnelson.workers.dev/v1/lista';
+  function reais(v) { var c = Math.round(v * 100), i = String(Math.floor(c / 100)), d = String(c % 100); return 'R$ ' + i.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + (d.length < 2 ? '0' + d : d); }
+  function vendidos(n) { if (n >= 1e6) return String(Math.floor(n / 1e5) / 10).replace('.', ',') + ' mi+'; if (n >= 1000) return Math.floor(n / 1000) + ' mil+'; if (n >= 100) return Math.floor(n / 100) * 100 + '+'; return String(n); }
+  function num(x) { return typeof x === 'number' && isFinite(x) ? x : null; }
+  function linkDe(s) { var l = s.links && (s.links.site || s.links.pausa); return /^https:\/\/([a-z0-9-]+\.)*shopee\.com\.br\//.test(l || '') ? l : ''; }
+  var y = new XMLHttpRequest();
+  y.open('GET', ADS, true);
+  y.onload = function () {
+    try {
+      if (y.status !== 200) return;
+      var j = JSON.parse(y.responseText);
+      if (j.teste) return;
+      var ok = (j.slots || []).filter(function (s) { return s && s.publico === 'neutro' && s.nome && /^https:\/\//.test(s.imagem || '') && linkDe(s); });
+      if (!ok.length) return;
+      var s = ok[Math.floor(Math.random() * ok.length)], preco = num(s.preco), desc = num(s.desconto), vend = num(s.vendidos), nota = num(s.nota), pr = '', mt = [];
+      if (preco != null && preco > 0) pr = '<span class="pr">a partir de <em>' + reais(preco) + '</em>' + (desc != null && desc >= 1 ? '<i>-' + Math.round(desc) + '%</i>' : '') + '</span>';
+      if (nota != null && nota > 0) mt.push('★ ' + (Math.round(nota * 10) / 10).toFixed(1).replace('.', ','));
+      if (vend != null && vend > 0) mt.push(vendidos(Math.floor(vend)) + ' vendidos');
+      var a = document.getElementById('anuncio');
+      a.href = linkDe(s);
+      a.innerHTML = '<span class="im"><img alt="" src="' + esc(s.imagem) + '"></span><span class="tx"><small>Anúncio · link de afiliado</small><b>' + esc(s.nome) + '</b>' + pr +
+        (mt.length ? '<span class="mt">' + esc(mt.join(' · ')) + '</span>' : '') + '<span class="ir">Ver na ' + esc(s.loja || 'Shopee') + ' ›</span></span>';
+      var im = a.querySelector('img');
+      im.onload = function () { a.hidden = false; };
+      im.onerror = function () { a.hidden = true; };
+    } catch (e) {}
+  };
+  y.send();
   var x = new XMLHttpRequest();
   x.open('GET', 'https://api.github.com/repos/' + REPO + '/releases?per_page=50', true);
   x.onload = function () { try { if (x.status === 200) desenha(JSON.parse(x.responseText)); } catch (e) {} };

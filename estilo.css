@@ -47,3 +47,17 @@ details p { margin: 10px 0 2px; }
   .plat { flex-direction: column; align-items: stretch; }
   .bt { text-align: center; }
 }
+
+/* anúncio de afiliado (mesmo cartão do app, em tamanho de página) */
+.anuncio { display: flex; gap: 16px; align-items: center; margin: 26px 0 8px; padding: 14px; background: #13282e; color: #eaf2ef; border-radius: 18px; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+.anuncio[hidden] { display: none; }
+.anuncio .im { flex: 0 0 116px; height: 116px; border-radius: 14px; overflow: hidden; background: #fff; border: 4px solid #f4b942; box-shadow: 0 0 16px rgba(244,185,66,.45); }
+.anuncio .im img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.anuncio .tx { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.anuncio small { color: #93aeab; font-size: 13px; }
+.anuncio b { font-size: 16px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.anuncio .pr { font-size: 14px; color: #c9d6d3; white-space: nowrap; }
+.anuncio .pr em { font-style: normal; font-weight: 700; font-size: 18px; color: #eaf2ef; }
+.anuncio .pr i { display: inline-block; white-space: nowrap; font-style: normal; background: #f4b942; color: #14231f; font-weight: 700; font-size: 12px; border-radius: 6px; padding: 1px 6px; margin-left: 6px; }
+.anuncio .mt { color: #93aeab; font-size: 13px; }
+.anuncio .ir { align-self: flex-start; margin-top: 4px; background: #f4b942; color: #14231f; font-weight: 700; font-size: 14px; border-radius: 999px; padding: 6px 14px; }
