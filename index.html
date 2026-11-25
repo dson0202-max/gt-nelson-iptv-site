@@ -87,10 +87,14 @@
 
   // Downloads: os arquivos ficam nos Releases deste repositório. Cada plataforma tem um prefixo de versão
   // (android-v1.1.3, androidtv-v1.0.0...), e a página mostra a versão mais nova de cada uma.
+  // 25/11/2026: o Baixar não depende mais da API do GitHub (que pode falhar ou demorar, e aí o botão levava para a
+  // página de versões do GitHub). Cada plataforma tem um Release fixo (android-atual, androidtv-atual, marcado como
+  // pré-lançamento para o app e a página não o contarem como versão) com o APK mais novo sempre com o mesmo nome:
+  // o link é sempre o mesmo e baixa direto. A API só completa a versão, a data e o tamanho.
   var REPO = 'dson0202-max/gt-nelson-iptv-site';
   var PLATAFORMAS = [
-    { id: 'android', nome: 'Android', sub: 'Celular e tablet · Android 8 ou mais novo', prefixo: 'android-v', ext: '.apk', emBreve: false },
-    { id: 'androidtv', nome: 'Android TV', sub: 'Fire TV Stick, Google TV e TV Box · Android 5 ou mais novo · no Downloader, código 8178065', prefixo: 'androidtv-v', ext: '.apk', emBreve: false, como: '#instalar-tv' },
+    { id: 'android', nome: 'Android', sub: 'Celular e tablet · Android 8 ou mais novo', prefixo: 'android-v', ext: '.apk', emBreve: false, fixo: 'gtnelson-iptv-android.apk' },
+    { id: 'androidtv', nome: 'Android TV', sub: 'Fire TV Stick, Google TV e TV Box · Android 5 ou mais novo · no Downloader, código 8178065', prefixo: 'androidtv-v', ext: '.apk', emBreve: false, como: '#instalar-tv', fixo: 'gtnelson-iptv-androidtv.apk' },
     { id: 'lg', nome: 'TV LG', sub: 'webOS · pela loja de apps da LG', loja: '', emBreve: true }
   ];
   var TODAS = 'https://github.com/' + REPO + '/releases';
@@ -114,9 +118,14 @@
           a = (x.assets || []).filter(function (y) { return y.name.slice(-p.ext.length) === p.ext; })[0];
           if (a) { r = x; return true; } return false;
         });
+        var fixo = p.fixo ? 'https://github.com/' + REPO + '/releases/download/' + p.id + '-atual/' + p.fixo : '';
         if (r) {
-          bt = '<a class="bt" href="' + esc(a.browser_download_url) + '">Baixar</a>';
+          bt = '<a class="bt" href="' + esc(fixo || a.browser_download_url) + '">Baixar</a>';
           info = 'Versão ' + esc(r.tag_name.slice(p.prefixo.length)) + ' · ' + data(r.published_at) + ' · ' + mb(a.size);
+        } else if (fixo && !rels) {
+          // ainda sem a resposta da API (ou ela falhou): o link fixo baixa a versão mais nova do mesmo jeito
+          bt = '<a class="bt" href="' + esc(fixo) + '">Baixar</a>';
+          info = 'Versão mais nova';
         } else if (rels) {
           // a lista de versões veio e não tem esta plataforma ainda
           bt = '<span class="bt off">Em preparação</span>';
