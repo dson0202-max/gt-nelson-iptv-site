@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://dson0202-max.github.io/gt-nelson-iptv-site/">
 <meta property="og:type" content="website">
 <link rel="icon" href="logo.png">
-<link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="estilo.css?v=a239ee95">
 </head>
 <body>
 <header class="topo"><a href="./"><img src="logo.png" alt="" width="48" height="48"><span>GT Nelson IPTV</span></a></header>
@@ -49,11 +49,20 @@
 </ol>
 <p class="muted">Para atualizar, baixe de novo e instale por cima: perfis, favoritos e servidores continuam lá. Funciona do Android 8 em diante, em celular e tablet.</p>
 
+<h2 id="instalar-tv">Como instalar na TV (Fire TV, Google TV, TV Box)</h2>
+<ol class="passos">
+  <li>Na loja da TV, instale o app <b>Downloader</b> (gratuito, ícone laranja).</li>
+  <li>Permita que ele instale apps: no <b>Fire TV</b>, em Configurações › Minha Fire TV › Opções do desenvolvedor › Instalar apps desconhecidos (se as opções do desenvolvedor não aparecerem, em Minha Fire TV › Sobre, clique 7 vezes no nome do aparelho); no <b>Google TV</b>, em Configurações › Sistema › Sobre › toque 7 vezes em "Build do SO" para liberar as opções do desenvolvedor, e depois em Apps › Segurança › Fontes desconhecidas.</li>
+  <li>Abra o Downloader, digite <b>dson0202-max.github.io/gt-nelson-iptv-site</b> e, nesta página, escolha <b>Baixar</b> em Android TV.</li>
+  <li>Instale e abra. O app aparece na tela inicial da TV, e tudo funciona pelo controle remoto.</li>
+</ol>
+<p class="muted">Na TV, o app usa as mesmas telas da versão da TV LG. Os anúncios trazem um QR code: aponte a câmera do celular para ver o produto.</p>
+
 <h2>Perguntas</h2>
 <details><summary>O app vem com canais?</summary><p>Não. O GT Nelson IPTV é só o player: ele não fornece, hospeda nem vende canais, filmes ou séries. Ele toca o que você cadastrar, com a assinatura que você já tem.</p></details>
-<details><summary>É grátis mesmo?</summary><p>Sim. No celular, o app mostra de vez em quando a sugestão de um produto da Shopee, na pausa e entre episódios, marcada como "Anúncio · link de afiliado". Perfis infantis não veem anúncios, e nada aparece no ao vivo nem transmitindo.</p></details>
+<details><summary>É grátis mesmo?</summary><p>Sim. No celular e na Android TV, o app mostra de vez em quando a sugestão de um produto da Shopee, na pausa e entre episódios, marcada como "Anúncio · link de afiliado". Perfis infantis não veem anúncios, e nada aparece no ao vivo nem transmitindo.</p></details>
 <details><summary>Meus dados ficam onde?</summary><p>No seu aparelho. O app não cria conta e não envia usuário nem senha para ninguém além do seu próprio servidor. Veja a <a href="privacidade.html">política de privacidade</a>.</p></details>
-<details><summary>Funciona na TV?</summary><p>Hoje, pelo Chromecast, transmitindo do celular. A versão para TV LG está em análise na loja da LG, e a versão para Android TV vem depois.</p></details>
+<details><summary>Funciona na TV?</summary><p>Sim: na Android TV (Fire TV Stick, Google TV e TV Box) pelo app de TV, e em qualquer TV com Chromecast, transmitindo do celular. A versão para TV LG está em análise na loja da LG.</p></details>
 
 <hr>
 
@@ -81,7 +90,7 @@
   var REPO = 'dson0202-max/gt-nelson-iptv-site';
   var PLATAFORMAS = [
     { id: 'android', nome: 'Android', sub: 'Celular e tablet · Android 8 ou mais novo', prefixo: 'android-v', ext: '.apk', emBreve: false },
-    { id: 'androidtv', nome: 'Android TV', sub: 'Google TV, TV Box e Chromecast com Google TV', prefixo: 'androidtv-v', ext: '.apk', emBreve: true },
+    { id: 'androidtv', nome: 'Android TV', sub: 'Fire TV Stick, Google TV e TV Box · Android 5 ou mais novo', prefixo: 'androidtv-v', ext: '.apk', emBreve: false, como: '#instalar-tv' },
     { id: 'lg', nome: 'TV LG', sub: 'webOS · pela loja de apps da LG', loja: '', emBreve: true }
   ];
   var TODAS = 'https://github.com/' + REPO + '/releases';
@@ -108,11 +117,15 @@
         if (r) {
           bt = '<a class="bt" href="' + esc(a.browser_download_url) + '">Baixar</a>';
           info = 'Versão ' + esc(r.tag_name.slice(p.prefixo.length)) + ' · ' + data(r.published_at) + ' · ' + mb(a.size);
+        } else if (rels) {
+          // a lista de versões veio e não tem esta plataforma ainda
+          bt = '<span class="bt off">Em preparação</span>';
         } else {
           // sem acesso ao GitHub agora: leva para a lista de versões
           bt = '<a class="bt" href="' + TODAS + '">Baixar</a>';
           info = 'Escolha o arquivo .apk mais recente';
         }
+        if (r && p.como) info += ' · <a href="' + p.como + '">como instalar</a>';
       }
       h += '<div class="plat' + (p.emBreve ? ' breve' : '') + '"><div><b>' + esc(p.nome) + '</b><span>' + esc(p.sub) + '</span>' +
         (info ? '<small>' + info + '</small>' : '') + '</div>' + bt + '</div>';
@@ -145,7 +158,7 @@
       if (vend != null && vend > 0) mt.push(vendidos(Math.floor(vend)) + ' vendidos');
       var a = document.getElementById('anuncio');
       a.href = linkDe(s);
-      a.innerHTML = '<span class="im"><img alt="" src="' + esc(s.imagem) + '"></span><span class="tx"><small>Anúncio · link de afiliado</small><b>' + esc(s.nome) + '</b>' + pr +
+      a.innerHTML = '<span class="im"><img alt="" width="116" height="116" src="' + esc(s.imagem) + '"></span><span class="tx"><small>Anúncio · link de afiliado</small><b>' + esc(s.nome) + '</b>' + pr +
         (mt.length ? '<span class="mt">' + esc(mt.join(' · ')) + '</span>' : '') + '<span class="ir">Ver na ' + esc(s.loja || 'Shopee') + ' ›</span></span>';
       var im = a.querySelector('img');
       im.onload = function () { a.hidden = false; };
