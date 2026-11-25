@@ -62,3 +62,4 @@ details p { margin: 10px 0 2px; }
 .anuncio .pr i { display: inline-block; white-space: nowrap; font-style: normal; background: #f4b942; color: #14231f; font-weight: 700; font-size: 12px; border-radius: 6px; padding: 1px 6px; margin-left: 6px; }
 .anuncio .mt { color: #93aeab; font-size: 13px; }
 .anuncio .ir { align-self: flex-start; margin-top: 4px; background: #f4b942; color: #14231f; font-weight: 700; font-size: 14px; border-radius: 999px; padding: 6px 14px; }
+.codigo { display: inline-block; font-size: 1.15em; letter-spacing: 2px; background: #f4b942; color: #14231f; border-radius: 8px; padding: 0 8px; }
